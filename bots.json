@@ -1,0 +1,173 @@
+[
+  {
+    "bot_id": "bot1",
+    "uid": 4322621763,
+    "password": "BoAra_QAGR7NFYMC2",
+    "account_id": "14026401488",
+    "name": "BoAra_B¹⁸⁵⁷⁰",
+    "region": "VN",
+    "role": "super"
+  },
+  {
+    "bot_id": "bot2",
+    "uid": 4322621765,
+    "password": "BoAra_M0TS9Z1F9NO",
+    "account_id": "14026401538",
+    "name": "BoAra_B³⁸¹⁴²",
+    "region": "VN",
+    "role": "super"
+  },
+  {
+    "bot_id": "bot3",
+    "uid": 4322621842,
+    "password": "BoAra_KHRR0MREEUG",
+    "account_id": "14026401678",
+    "name": "BoAra_B⁶⁰⁴⁷⁵",
+    "region": "VN",
+    "role": "super"
+  },
+  {
+    "bot_id": "bot4",
+    "uid": 4322621909,
+    "password": "BoAra_QT8TPSKJDGW",
+    "account_id": "14026401954",
+    "name": "BoAra_B⁵²³⁹⁶",
+    "region": "VN",
+    "role": "super"
+  },
+  {
+    "bot_id": "bot5",
+    "uid": 4322621922,
+    "password": "BoAra_OI4GWICAYF2",
+    "account_id": "14026401968",
+    "name": "BoAra_B³⁴⁸⁷⁰",
+    "region": "VN",
+    "role": "super"
+  },
+  {
+    "bot_id": "bot6",
+    "uid": 4322621980,
+    "password": "BoAra_OA0X9XMP1OW",
+    "account_id": "14026402322",
+    "name": "BoAra_B⁸⁵²⁵⁰",
+    "region": "VN",
+    "role": "normal"
+  },
+  {
+    "bot_id": "bot7",
+    "uid": 4322622002,
+    "password": "BoAra_RD2AXZJXSQ9",
+    "account_id": "14026402460",
+    "name": "BoAra_B⁸¹⁴⁸²",
+    "region": "VN",
+    "role": "normal"
+  },
+  {
+    "bot_id": "bot8",
+    "uid": 4322622004,
+    "password": "BoAra_GV9JO2ZHDLG",
+    "account_id": "14026402484",
+    "name": "BoAra_B⁸³⁴⁶⁰",
+    "region": "VN",
+    "role": "normal"
+  },
+  {
+    "bot_id": "bot9",
+    "uid": 4322622070,
+    "password": "BoAra_AWMIY3C3ZVJ",
+    "account_id": "14026402745",
+    "name": "BoAra_B⁵⁴⁵⁶⁵",
+    "region": "VN",
+    "role": "normal"
+  },
+  {
+    "bot_id": "bot10",
+    "uid": 4322622094,
+    "password": "BoAra_8I5LSPRCLC0",
+    "account_id": "14026402814",
+    "name": "BoAra_B³⁹⁸⁴⁴",
+    "region": "VN",
+    "role": "normal"
+  },
+  {
+    "uid": 4322622100,
+    "password": "BoAra_18R761NHCCO",
+    "account_id": "14026402895",
+    "name": "BoAra_B²⁶⁶⁴⁶",
+    "region": "VN",
+    "bot_id": "bot11",
+    "role": "normal"
+  },
+  {
+    "uid": 4322622140,
+    "password": "BoAra_UYZ7Y1M4Y8Z",
+    "account_id": "14026403127",
+    "name": "BoAra_B⁹⁹⁶⁹²",
+    "region": "VN",
+    "bot_id": "bot12",
+    "role": "normal"
+  },
+  {
+    "uid": 4322622152,
+    "password": "BoAra_C3KBBNPO8C4",
+    "account_id": "14026403213",
+    "name": "BoAra_B⁸²⁶⁷⁷",
+    "region": "VN",
+    "bot_id": "bot13",
+    "role": "normal"
+  },
+  {
+    "uid": 4322622169,
+    "password": "BoAra_HPNT56V7PTS",
+    "account_id": "14026403329",
+    "name": "BoAra_B⁸³⁰⁵²",
+    "region": "VN",
+    "bot_id": "bot14",
+    "role": "normal"
+  },
+  {
+    "uid": 4322622219,
+    "password": "BoAra_GA22Y3GS54W",
+    "account_id": "14026403575",
+    "name": "BoAra_B⁶⁹⁴⁹⁰",
+    "region": "VN",
+    "bot_id": "bot15",
+    "role": "normal"
+  },
+  {
+    "uid": 4322622245,
+    "password": "BoAra_HDAG99GHCTH",
+    "account_id": "14026403725",
+    "name": "BoAra_B⁵⁸⁵⁹¹",
+    "region": "VN",
+    "bot_id": "bot16",
+    "role": "normal"
+  },
+  {
+    "uid": 4322622244,
+    "password": "BoAra_DQY5DR2UWFO",
+    "account_id": "14026403733",
+    "name": "BoAra_B⁶³⁹⁷³",
+    "region": "VN",
+    "bot_id": "bot17",
+    "role": "normal"
+  },
+  {
+    "uid": 4322622290,
+    "password": "BoAra_4UHE63M8694",
+    "account_id": "14026403948",
+    "name": "BoAra_B⁶⁷⁶⁴⁸",
+    "region": "VN",
+    "bot_id": "bot18",
+    "role": "normal"
+  },
+  {
+    "uid": 4322622316,
+    "password": "BoAra_ZRJTOVHO2PA",
+    "account_id": "14026404084",
+    "name": "BoAra_B⁵⁵⁵³⁵",
+    "region": "VN",
+    "bot_id": "bot19",
+    "role": "normal"
+  }
+]

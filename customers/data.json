@@ -1,0 +1,283 @@
+{
+  "customers": [
+    {
+      "uid": 6477150337,
+      "assigned_bot": "bot1",
+      "name": "boara",
+      "social": "zl",
+      "days": 20,
+      "added_at": "2025-12-05 12:05:39",
+      "expire_at": "2025-12-25 12:05:39"
+    },
+    {
+      "uid": 453405172,
+      "assigned_bot": "bot1",
+      "name": "seller1",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-05 10:45:28",
+      "expire_at": "2026-01-04 10:45:28"
+    },
+    {
+      "uid": 13823657992,
+      "assigned_bot": "bot1",
+      "name": "seller2",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-05 10:46:05",
+      "expire_at": "2026-01-04 10:46:05"
+    },
+    {
+      "uid": 875963446,
+      "assigned_bot": "bot2",
+      "name": "seller3",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-05 10:47:19",
+      "expire_at": "2026-01-04 10:47:19"
+    },
+    {
+      "uid": 3221584967,
+      "assigned_bot": "bot2",
+      "name": "seller4",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-05 10:47:31",
+      "expire_at": "2026-01-04 10:47:31"
+    },
+    {
+      "uid": 314324740,
+      "assigned_bot": "bot3",
+      "name": "seller6",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-05 10:48:03",
+      "expire_at": "2026-01-04 10:48:03"
+    },
+    {
+      "uid": 9273372865,
+      "assigned_bot": "bot4",
+      "name": "seller7",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-05 10:48:34",
+      "expire_at": "2026-01-04 10:48:34"
+    },
+    {
+      "uid": 29645688,
+      "assigned_bot": "bot5",
+      "name": "seller7",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-05 10:49:04",
+      "expire_at": "2026-01-04 10:49:04"
+    },
+    {
+      "uid": 407189495,
+      "assigned_bot": "bot5",
+      "name": "seller7",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-05 10:49:16",
+      "expire_at": "2026-01-04 10:49:16"
+    },
+    {
+      "uid": 413469768,
+      "assigned_bot": "bot4",
+      "name": "seller7",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-05 10:49:32",
+      "expire_at": "2026-01-04 10:49:32"
+    },
+    {
+      "uid": 7741124479,
+      "assigned_bot": "bot4",
+      "name": "seller7",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-05 10:49:57",
+      "expire_at": "2026-01-04 10:49:57"
+    },
+    {
+      "uid": 326493714,
+      "assigned_bot": "bot2",
+      "name": "seller5",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-05 10:50:15",
+      "expire_at": "2026-01-04 10:50:15"
+    },
+    {
+      "uid": 1880402591,
+      "assigned_bot": "bot6",
+      "name": "Trương Bảo",
+      "social": "zl",
+      "days": 3,
+      "added_at": "2025-12-05 11:00:27",
+      "expire_at": "2025-12-08 11:00:27"
+    },
+    {
+      "uid": 261055956,
+      "assigned_bot": "bot6",
+      "name": "boara",
+      "social": "tele",
+      "days": 5,
+      "added_at": "2025-12-05 13:54:59",
+      "expire_at": "2025-12-10 13:54:59"
+    },
+    {
+      "uid": 9831315076,
+      "assigned_bot": "bot5",
+      "name": "seller",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-05 13:57:32",
+      "expire_at": "2026-01-04 13:57:32"
+    },
+    {
+      "uid": 2698056040,
+      "assigned_bot": "bot7",
+      "name": "văn quốc tỷ",
+      "social": "zl",
+      "days": 3,
+      "added_at": "2025-12-05 14:12:43",
+      "expire_at": "2025-12-08 14:12:43"
+    },
+    {
+      "uid": 1710357830,
+      "assigned_bot": "bot7",
+      "name": "nguyen an",
+      "social": "zl",
+      "days": 3,
+      "added_at": "2025-12-05 14:42:34",
+      "expire_at": "2025-12-08 14:42:34"
+    },
+    {
+      "uid": 103850776,
+      "assigned_bot": "bot8",
+      "name": "Hồng Thư",
+      "social": "zl",
+      "days": 3,
+      "added_at": "2025-12-05 14:42:58",
+      "expire_at": "2025-12-08 14:42:58"
+    },
+    {
+      "uid": 343669284,
+      "assigned_bot": "bot8",
+      "name": "Bi",
+      "social": "zl",
+      "days": 2,
+      "added_at": "2025-12-05 14:43:18",
+      "expire_at": "2025-12-07 14:43:18"
+    },
+    {
+      "uid": 1819453073,
+      "assigned_bot": "bot8",
+      "name": "ying yang",
+      "social": "fb",
+      "days": 30,
+      "added_at": "2025-12-05 14:54:56",
+      "expire_at": "2026-01-04 14:54:56"
+    },
+    {
+      "uid": 2054306617,
+      "assigned_bot": "bot8",
+      "name": "minh phong",
+      "social": "zl",
+      "days": 7,
+      "added_at": "2025-12-05 15:45:22",
+      "expire_at": "2025-12-12 15:45:22"
+    },
+    {
+      "uid": 12575030412,
+      "assigned_bot": "bot9",
+      "name": "seller",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-05 16:44:59",
+      "expire_at": "2026-01-04 16:44:59"
+    },
+    {
+      "uid": 13463114475,
+      "assigned_bot": "bot9",
+      "name": "seller",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-05 18:14:20",
+      "expire_at": "2026-01-04 18:14:20"
+    },
+    {
+      "uid": 1250510527,
+      "assigned_bot": "bot10",
+      "name": "seller",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-05 18:14:27",
+      "expire_at": "2026-01-04 18:14:27"
+    },
+    {
+      "uid": 444694631,
+      "assigned_bot": "bot10",
+      "name": "Huy Quang",
+      "social": "tele",
+      "days": 3,
+      "added_at": "2025-12-06 09:06:32",
+      "expire_at": "2025-12-09 09:06:32"
+    },
+    {
+      "uid": 4017576504,
+      "assigned_bot": "bot10",
+      "name": "Atran Atran",
+      "social": "tele",
+      "days": 1,
+      "added_at": "2025-12-06 09:27:24",
+      "expire_at": "2025-12-07 09:27:24"
+    },
+    {
+      "uid": 8134979707,
+      "assigned_bot": "bot10",
+      "name": "seller",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-06 09:51:23",
+      "expire_at": "2026-01-05 09:51:23"
+    },
+    {
+      "uid": 3901556898,
+      "assigned_bot": "bot2",
+      "name": "Công Hiếu",
+      "social": "tele",
+      "days": 1,
+      "added_at": "2025-12-06 10:35:07",
+      "expire_at": "2025-12-07 10:35:07"
+    },
+    {
+      "uid": 473070556,
+      "assigned_bot": "bot6",
+      "name": "seller",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-06 12:17:20",
+      "expire_at": "2026-01-05 12:17:20"
+    },
+    {
+      "uid": 365155746,
+      "assigned_bot": "bot10",
+      "name": "Lê T Thành",
+      "social": "tele",
+      "days": 7,
+      "added_at": "2025-12-06 12:59:23",
+      "expire_at": "2025-12-13 12:59:23"
+    },
+    {
+      "uid": 1337638063,
+      "assigned_bot": "bot1",
+      "name": "boara",
+      "social": "tele",
+      "days": 20,
+      "added_at": "2025-12-07 00:04:30",
+      "expire_at": "2025-12-27 00:04:30"
+    }
+  ]
+}
