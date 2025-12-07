@@ -363,6 +363,7 @@ def require_private(func):
 @require_private
 def cmd_start(message):
     bot.send_message(message.chat.id,
+        "📋 Lệnh như sau\n\n"
         "/add ten mxh uid so_ngay\n"
         "/remove uid\n"
         "/check\n"
@@ -380,7 +381,7 @@ def cmd_add(message):
 
     # /add name social uid days [bot_id]
     if len(parts) < 5:
-        bot.send_message(message.chat.id, "Sai cú pháp. /add ten mxh uid so_ngay [bot]")
+        bot.send_message(message.chat.id, "❌ Sai cú pháp. /add ten mxh uid so_ngay [bot]")
         return
 
     days_str = parts[-1]
@@ -399,13 +400,13 @@ def cmd_add(message):
 
 
     if not uid_str.isdigit():
-        bot.send_message(message.chat.id, "UID phải là số.")
+        bot.send_message(message.chat.id, "⚠️ UID phải là số.")
         return
 
     try:
         days = int(days_str)
     except:
-        bot.send_message(message.chat.id, "Ngày không hợp lệ.")
+        bot.send_message(message.chat.id, "⚠️ Ngày không hợp lệ.")
         return
 
     with data_lock:
@@ -415,23 +416,23 @@ def cmd_add(message):
 
         # check tồn tại
         if any(str(c["uid"]) == uid_str for c in customers):
-            bot.send_message(message.chat.id, "UID đã tồn tại trong data.json.")
+            bot.send_message(message.chat.id, "⚠️ UID đã tồn tại trong data.json.")
             return
 
         if uid_exists_in_any_bot(uid_str):
-            bot.send_message(message.chat.id, "UID đã tồn tại trong customers_botX.json.")
+            bot.send_message(message.chat.id, "⚠️ UID đã tồn tại trong customers_botX.json.")
             return
 
         if forced_bot:
             chosen = get_bot_info_by_id(forced_bot, bots)
             if not chosen:
-                bot.send_message(message.chat.id, f"Bot {forced_bot} không tồn tại.")
+                bot.send_message(message.chat.id, f"⚠️ Bot {forced_bot} không tồn tại.")
                 return
         else:
             chosen = choose_bot(bots)
 
         if not chosen:
-            bot.send_message(message.chat.id, "Không còn bot nào trống slot.")
+            bot.send_message(message.chat.id, "❌ Không còn bot nào trống slot.")
             return
 
         bot_id = chosen["bot_id"]
@@ -441,9 +442,9 @@ def cmd_add(message):
         if not ok:
             bot.send_message(
                 message.chat.id,
-                f"Đã thêm khách\nTên: {name}\nMXH: {social}\nUID: {uid_str}\n"
-                f"Bot: {bot_id}\nNgày: {days}\nHết hạn: N/A\n"
-                f"KB: {ok} - {msg}\n(API retry 3 lần vẫn thất bại)"
+                f"❌ Failed to add customer\n\n👤Tên: {name}\n🌐 MXH: {social}\n🆔 UID: {uid_str}\n\n"
+                f"🤖 Bot: {bot_id}\n📅 Ngày: {days}\n💔 Hết hạn: N/A\n"
+                f"🌟 KB: {ok} - {msg}\n(API retry 3 lần vẫn thất bại)"
             )
             return  # không lưu nếu fail
 
@@ -469,9 +470,9 @@ def cmd_add(message):
 
         bot.send_message(
             message.chat.id,
-            f"Đã thêm khách\nTên: {name}\nMXH: {social}\nUID: {uid_str}\n"
-            f"Bot: {bot_id}\nNgày: {days}\nHết hạn: {format_date_short(expire)}\n"
-            f"KB: {ok} - {msg}"
+            f"✅ Đã thêm khách\n\n👤Tên: {name}\n🌐 MXH: {social}\n🆔 UID: {uid_str}\n\n"
+            f"🤖 Bot: {bot_id}\n📅 Ngày: {days}\nHết hạn: {format_date_short(expire)}\n"
+            f"🌟 KB: {ok} - {msg}"
         )
 
 
@@ -480,12 +481,12 @@ def cmd_add(message):
 def cmd_remove(message):
     parts = message.text.split()
     if len(parts) != 2:
-        bot.send_message(message.chat.id, "Cú pháp: /remove uid")
+        bot.send_message(message.chat.id, "⚠️ Cú pháp: /remove uid")
         return
 
     uid_str = parts[1]
     if not uid_str.isdigit():
-        bot.send_message(message.chat.id, "UID phải là số.")
+        bot.send_message(message.chat.id, "⚠️ UID phải là số.")
         return
 
     with data_lock:
@@ -507,11 +508,11 @@ def cmd_remove(message):
             logs = remove_uid_from_specific_bots(uid_str, bots, bot_ids)
 
     if not existed_data and not existed_file:
-        bot.send_message(message.chat.id, "UID không tồn tại.")
+        bot.send_message(message.chat.id, "⚠️ UID không tồn tại.")
         return
 
     lines = [f"{r['bot_id']}: {r['ok']} - {r['msg']}" for r in logs]
-    bot.send_message(message.chat.id, "Đã xóa UID:\n" + "\n".join(lines))
+    bot.send_message(message.chat.id, "✅ Đã xóa UID:\n" + "\n".join(lines))
 
 
 @bot.message_handler(commands=["check"])
@@ -524,7 +525,7 @@ def cmd_check(message):
 
     if len(parts) == 1:
         if not customers:
-            bot.send_message(message.chat.id, "Không có khách.")
+            bot.send_message(message.chat.id, "⚠️ Không có khách.")
             return
 
         today = datetime.now()
@@ -533,9 +534,14 @@ def cmd_check(message):
             exp = parse_time(c["expire_at"])
             left = (exp - today).days
             lines.append(
-                f"{c['name']} ({c['social']}) - UID {c['uid']} - Bot {c['assigned_bot']} - "
-                f"{c['days']} ngày - còn {left} ngày - hết hạn {format_date_short(exp)}"
+                f"👤 Name: {c['name']}\n"
+                f"🌐 MXH: {c['social']}\n"
+                f"🤖 Bot: {c['assigned_bot']}\n"
+                f"🆔 UID: {c['uid']}\n\n"
+                f"📅 Duration: {c['days']} days\n"
+                f"⏳ Expire: {format_date_short(exp)}"
             )
+
         bot.send_message(message.chat.id, "\n".join(lines))
         return
 
@@ -543,7 +549,7 @@ def cmd_check(message):
         uid_str = parts[1]
         m = [c for c in customers if str(c["uid"]) == uid_str]
         if not m:
-            bot.send_message(message.chat.id, "Không tìm thấy UID.")
+            bot.send_message(message.chat.id, "⚠️ Không tìm thấy UID.")
             return
 
         c = m[0]
@@ -583,7 +589,7 @@ def cmd_checkbot(message):
 
         bot.send_message(
             message.chat.id,
-            f"Tổng bot: {len(bots)}\nTổng users: {total}\n\n" + "\n".join(lines)
+            f"🤖 Bots: {len(bots)}\n👤 Users: {total}\n\n" + "\n".join(lines)
         )
         return
 
@@ -617,23 +623,23 @@ def cmd_checkbot(message):
 def cmd_log(message):
     parts = message.text.split()
     if len(parts) != 2:
-        bot.send_message(message.chat.id, "Cú pháp: /log uid")
+        bot.send_message(message.chat.id, "⚠️ Cú pháp: /log uid")
         return
 
     uid = parts[1]
     if not os.path.exists(EVENT_LOG_FILE):
-        bot.send_message(message.chat.id, "Không tìm thấy file log.")
+        bot.send_message(message.chat.id, "⚠️ Không tìm thấy file log.")
         return
 
     try:
         with open(EVENT_LOG_FILE, "r", encoding="utf-8") as f:
             lines = [x.strip("\n") for x in f if uid in x]
     except:
-        bot.send_message(message.chat.id, "Lỗi đọc log.")
+        bot.send_message(message.chat.id, "⚠️ Lỗi đọc log.")
         return
 
     if not lines:
-        bot.send_message(message.chat.id, "Không có log cho UID này.")
+        bot.send_message(message.chat.id, "⚠️ Không có log cho UID này.")
         return
 
     chunk = ""
@@ -670,18 +676,18 @@ def log_watcher():
                         try:
                             bot.send_message(ADMIN_CHAT_ID, line)
                         except Exception as e:
-                            print("Error sending log:", e)
+                            print("⚠️ Error sending log:", e)
                 else:
                     time.sleep(0.2)
 
     except Exception as e:
-        print("Log watcher error:", e)
+        print("⚠️ Log watcher error:", e)
 
 def main():
     threading.Thread(target=expiry_worker, daemon=True).start()
     threading.Thread(target=log_watcher, daemon=True).start()
 
-    print("Bot running...")
+    print("✅ Bot running...")
     bot.infinity_polling(timeout=60, long_polling_timeout=60)
 
 
