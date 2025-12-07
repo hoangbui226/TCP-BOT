@@ -2903,3 +2903,29 @@
 [bot1] Added -> UID 1337638063
 [bot1] Added -> UID 1337638063
 [bot1] Added -> UID 1337638063
+[bot10] Added -> UID 4017576504
+[bot10] UID 4017576504 -> Send Lag To Teamcode 0804708
+[bot10] UID 4017576504 -> Send Lag To Teamcode 0804708
+[bot10] UID 4017576504 -> Send Lag To Teamcode 0804708
+[bot9] Added -> UID 12575030412
+[bot10] UID 4017576504 -> Send Lag To Teamcode 0804708
+[bot10] UID 4017576504 -> Send Lag To Teamcode 1438208
+[bot8] Added -> UID 103850776
+[bot10] UID 4017576504 -> Send Lag To Teamcode 8411706
+[bot10] Added -> UID 4017576504
+[bot10] UID 4017576504 -> Send Lag To Teamcode 2035008
+[bot10] Added -> UID 444694631
+[bot10] Added -> UID 444694631
+[bot1] Added -> UID 13823657992
+[bot10] Added -> UID 444694631
+[bot1] UID 13823657992 -> Send Lag To Teamcode 3207181
+[bot2] Added -> UID 326493714
+[bot4] Added -> UID 7741124479
+[bot10] Added -> UID 444694631
+[bot10] Added -> UID 444694631
+[bot1] Added -> UID 13823657992
+[bot1] Added -> UID 13823657992
+[bot6] Added -> UID 473070556
+[bot9] Added -> UID 13463114475
+[bot9] Added -> UID 12575030412
+[bot10] Added -> UID 444694631

@@ -865,19 +865,23 @@ async def TcPChaT(ip, port, AutHToKen, key, iv, LoGinDaTaUncRypTinG, ready_event
 
                                 target_uid = parts[1]
 
-                                # kiểm tra uid hợp lệ
+                                # ===== KIỂM TRA UID =====
                                 if not target_uid.isdigit() or not (8 <= len(target_uid) <= 11):
                                     msg = "[FF0000]UID không hợp lệ!"
                                     P = await SEndMsG(response.Data.chat_type, msg, uid, chat_id, key, iv)
                                     await SEndPacKeT(whisper_writer, online_writer, 'ChaT', P)
                                     continue
+
+                                # MASK UID
                                 masked = masked_uid(target_uid)
+
+                                # NOTICE
                                 msg = f"[00FF00]Đang gửi like đến UID: {masked}"
                                 P = await SEndMsG(response.Data.chat_type, msg, uid, chat_id, key, iv)
                                 await SEndPacKeT(whisper_writer, online_writer, 'ChaT', P)
 
-                                # --------------------- API LIKE MỚI ---------------------
-                                api_url = f"https://your-like-api/like?uid={target_uid}"
+                                # ===== API LIKE MỚI (LOGIC GIỮ NGUYÊN) =====
+                                api_url = f"http://103.139.155.35:2020/likes?uid={uid}&keys=boara206"
 
                                 try:
                                     r = requests.get(api_url, timeout=12)
@@ -888,22 +892,50 @@ async def TcPChaT(ip, port, AutHToKen, key, iv, LoGinDaTaUncRypTinG, ready_event
                                     await SEndPacKeT(whisper_writer, online_writer, 'ChaT', P)
                                     continue
 
-                                # ---- PARSE RESULT ----
+                                # ====== XỬ LÝ MAX LIKE TODAY ======
                                 if "Failse" in data_like:
                                     if data_like["Failse"] == "Max likes today":
-                                        msg = "[FF0000]Max likes hôm nay!"
+                                        msg = "[B][C][FF0000]Max likes hôm nay!"
                                     else:
-                                        msg = f"[FF0000]{data_like['Failse']}"
-                                else:
-                                    msg = f"[00FF00]Đã gửi like thành công đến {masked}"
+                                        msg = f"[B][C][FF0000]{data_like['Failse']}"
 
-                                # SEND RESULT
-                                P = await SEndMsG(response.Data.chat_type, msg, uid, chat_id, key, iv)
+                                    P = await SEndMsG(response.Data.chat_type, msg, uid, chat_id, key, iv)
+                                    await SEndPacKeT(whisper_writer, online_writer, 'ChaT', P)
+                                    continue
+
+                                # ===== FORMAT RESPONSE THEO STYLE SOURCE 2 =====
+                                # Lấy thông tin nếu API trả về
+                                try:
+                                    info = data_like["result"]["Likes Info"]
+                                    uinfo = data_like["result"]["User Info"]
+
+                                    added = info.get("Likes Added", "?")
+                                    name = uinfo.get("Account Name", "Unknown")
+                                    region = uinfo.get("Server", "SG")
+                                except:
+                                    # API không trả thông tin đầy đủ → vẫn tạo bảng thành công
+                                    added = "?"
+                                    name = "Unknown"
+                                    region = "?"
+
+                                response_text = (
+                                    f"[C][B][FFFFFF]───────────────"
+                                    f"[C][B][39FF11]                              THÀNH CÔNG\n"
+                                    f"[C][B][FFFFFF]───────────────\n\n"
+                                    f"[FF0000]Account:          [FFFFFF]{name}\n"
+                                    f"[FF0000]UID:                  [FFFFFF]{masked}\n"
+                                    f"[FF0000]Server:             [FFFFFF]{region}\n\n"
+                                    f"[FF0000]Likes:               [FFFFFF]+{added} Likes\n\n"
+                                    f"[C][B][FFFFFF]───────────────\n"
+                                )
+
+                                P = await SEndMsG(response.Data.chat_type, response_text, uid, chat_id, key, iv)
                                 await SEndPacKeT(whisper_writer, online_writer, 'ChaT', P)
 
                             except Exception as e:
                                 print("LIKE ERROR:", e)
                                 continue
+
 
 
 
@@ -1229,12 +1261,10 @@ async def TcPChaT(ip, port, AutHToKen, key, iv, LoGinDaTaUncRypTinG, ready_event
                             save_friend_list()
 
                             # Menu 1 - Basic Commands
-                            menu1 = f'''[C][B][FFFFFF]UID: {masked}
-[C][B][FFFFFF]Hết hạn: {days} ngày {hours} giờ
-
-
+                            menu1 = f'''
+[C][B][FFFFFF]───────────────
 [C][B][FFED29]                  BẢNG LỆNH
-
+[C][B][FFFFFF]───────────────
 
 [FF0000]LIKE:                      [FFFFFF]like uid
 
@@ -1249,6 +1279,10 @@ async def TcPChaT(ip, port, AutHToKen, key, iv, LoGinDaTaUncRypTinG, ready_event
 [FF0000]HĐ:                      [FFFFFF]e [uid1-4] [1-22]
 [FF0000]FULL HĐ:             [FFFFFF]f [uid1-4]
 
+[C][B][FFFFFF]───────────────
+[C][B][FFFFFF]UID: {masked}
+[C][B][FFFFFF]Hết hạn: {days} ngày {hours} giờ
+[C][B][FFFFFF]───────────────
 
 [C][B][FFED29]         Tiҡtok: @boaraoffical
 '''
