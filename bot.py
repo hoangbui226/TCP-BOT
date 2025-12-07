@@ -537,9 +537,9 @@ def cmd_check(message):
                 f"👤 Name: {c['name']}\n"
                 f"🌐 MXH: {c['social']}\n"
                 f"🤖 Bot: {c['assigned_bot']}\n"
-                f"🆔 UID: {c['uid']}\n\n"
+                f"🆔 UID: {c['uid']}\n"
                 f"📅 Duration: {c['days']} days\n"
-                f"⏳ Expire: {format_date_short(exp)}"
+                f"⏳ Expire: {format_date_short(exp)}\n\n"
             )
 
         bot.send_message(message.chat.id, "\n".join(lines))
