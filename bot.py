@@ -10,7 +10,7 @@ import telebot
 # CONFIG
 # ==========================
 
-BOT_TOKEN = "8569857409:AAEiWTtD_rgxHcJYlr70pjPtENuNn2-2Vc4"
+BOT_TOKEN = "8569857409:AAEEP61kk0IakpAaMddVtDbLSdfAxeWMepE"
 ADMIN_CHAT_ID = -1003302847425  # Telegram user id của admin
 
 BOTS_FILE = "bots.json"

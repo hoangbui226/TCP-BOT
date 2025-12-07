@@ -10,15 +10,6 @@
       "expire_at": "2025-12-25 12:05:39"
     },
     {
-      "uid": 453405172,
-      "assigned_bot": "bot1",
-      "name": "seller1",
-      "social": "tele",
-      "days": 30,
-      "added_at": "2025-12-05 10:45:28",
-      "expire_at": "2026-01-04 10:45:28"
-    },
-    {
       "uid": 13823657992,
       "assigned_bot": "bot1",
       "name": "seller2",
@@ -163,15 +154,6 @@
       "expire_at": "2025-12-08 14:42:58"
     },
     {
-      "uid": 343669284,
-      "assigned_bot": "bot8",
-      "name": "Bi",
-      "social": "zl",
-      "days": 2,
-      "added_at": "2025-12-05 14:43:18",
-      "expire_at": "2025-12-07 14:43:18"
-    },
-    {
       "uid": 1819453073,
       "assigned_bot": "bot8",
       "name": "ying yang",
@@ -253,15 +235,6 @@
       "expire_at": "2025-12-13 12:59:23"
     },
     {
-      "uid": 1337638063,
-      "assigned_bot": "bot1",
-      "name": "boara",
-      "social": "tele",
-      "days": 20,
-      "added_at": "2025-12-07 00:04:30",
-      "expire_at": "2025-12-27 00:04:30"
-    },
-    {
       "uid": 8341547816,
       "assigned_bot": "bot7",
       "name": "Huy Chứ Aii",
@@ -305,6 +278,60 @@
       "days": 30,
       "added_at": "2025-12-07 10:29:11",
       "expire_at": "2026-01-06 10:29:11"
+    },
+    {
+      "uid": 1337638063,
+      "assigned_bot": "bot9",
+      "name": "boara",
+      "social": "tele",
+      "days": 10,
+      "added_at": "2025-12-07 12:14:15",
+      "expire_at": "2025-12-17 12:14:15"
+    },
+    {
+      "uid": 1413298684,
+      "assigned_bot": "bot12",
+      "name": "duc",
+      "social": "tik",
+      "days": 2,
+      "added_at": "2025-12-07 12:36:05",
+      "expire_at": "2025-12-09 12:36:05"
+    },
+    {
+      "uid": 1001730059,
+      "assigned_bot": "bot12",
+      "name": "Nghia Pham",
+      "social": "tele",
+      "days": 1,
+      "added_at": "2025-12-07 14:12:34",
+      "expire_at": "2025-12-08 14:12:34"
+    },
+    {
+      "uid": 9069779193,
+      "assigned_bot": "bot12",
+      "name": "seller",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-07 14:16:15",
+      "expire_at": "2026-01-06 14:16:15"
+    },
+    {
+      "uid": 4017576504,
+      "assigned_bot": "bot12",
+      "name": "Atran Atran",
+      "social": "tele",
+      "days": 1,
+      "added_at": "2025-12-07 14:17:31",
+      "expire_at": "2025-12-08 14:17:31"
+    },
+    {
+      "uid": 453405172,
+      "assigned_bot": "bot12",
+      "name": "seller",
+      "social": "tele",
+      "days": 30,
+      "added_at": "2025-12-07 14:45:38",
+      "expire_at": "2026-01-06 14:45:38"
     }
   ]
 }

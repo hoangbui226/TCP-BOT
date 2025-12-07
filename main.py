@@ -66,8 +66,8 @@ EMOTE_MAP = {
 FRIEND_LIST = set()
 
 BOT_ID = os.environ.get("BOT_ID", "bot17")
-BOT_UID = os.environ.get("BOT_UID", "4322622244")          # UID default nếu chạy 1 bot bình thường
-BOT_PASS = os.environ.get("BOT_PASS", "BoAra_DQY5DR2UWFO") # PASS default
+BOT_UID = os.environ.get("BOT_UID", "4322621763")          # UID default nếu chạy 1 bot bình thường
+BOT_PASS = os.environ.get("BOT_PASS", "BoAra_QAGR7NFYMC2") # PASS default
 import os
 
 # Tạo thư mục nếu chưa tồn tại
@@ -854,87 +854,134 @@ async def TcPChaT(ip, port, AutHToKen, key, iv, LoGinDaTaUncRypTinG, ready_event
                             continue
                                                 # -------------------- CUSTOM LIKE COMMAND --------------------
                         parts = inPuTMsG.strip().split()
-
+                        # ===================== FIXED LIKE COMMAND ====================
+                        # ===================== FIXED LIKE COMMAND =====================
                         if len(parts) >= 1 and parts[0].lower() == "like":
+
                             try:
+                                # ========== CHECK SYNTAX ==========
                                 if len(parts) < 2:
-                                    msg = "[FF0000]Sai cú pháp!\nDùng: like [uid]"
+                                    msg = (
+                                        "[B][C][FF0000]Sai cú pháp!\n\n"
+                                        "[B][C][FFFFFF]Cách dùng đúng:\n"
+                                        "[B][C][FFFFFF]like [uid]\n\n"
+                                        "[B][C][FFFFFF]Ví dụ: like 1488212295"
+                                    )
                                     P = await SEndMsG(response.Data.chat_type, msg, uid, chat_id, key, iv)
                                     await SEndPacKeT(whisper_writer, online_writer, 'ChaT', P)
                                     continue
 
                                 target_uid = parts[1]
 
-                                # ===== KIỂM TRA UID =====
+                                # ========== CHECK UID ==========
                                 if not target_uid.isdigit() or not (8 <= len(target_uid) <= 11):
-                                    msg = "[FF0000]UID không hợp lệ!"
+                                    msg = "[B][C][FF0000]UID không hợp lệ!"
                                     P = await SEndMsG(response.Data.chat_type, msg, uid, chat_id, key, iv)
                                     await SEndPacKeT(whisper_writer, online_writer, 'ChaT', P)
                                     continue
 
                                 # MASK UID
-                                masked = masked_uid(target_uid)
+                                masked_target_uid = target_uid[:-4] + "xxxx"
 
-                                # NOTICE
-                                msg = f"[00FF00]Đang gửi like đến UID: {masked}"
-                                P = await SEndMsG(response.Data.chat_type, msg, uid, chat_id, key, iv)
+                                # ========== SEND LOADING MESSAGE ==========
+                                first_msg = (
+                                    f"[C][B][FFFFFF]──────────────────\n"
+                                    f"[C][B][00FF00]ĐANG GỬI LIKE...\n"
+                                    f"[C][B][FFFFFF]──────────────────\n\n"
+                                    f"[FF0000]UID: [FFFFFF]{masked_target_uid}\n"
+                                )
+                                P = await SEndMsG(response.Data.chat_type, first_msg, uid, chat_id, key, iv)
                                 await SEndPacKeT(whisper_writer, online_writer, 'ChaT', P)
 
-                                # ===== API LIKE MỚI (LOGIC GIỮ NGUYÊN) =====
-                                api_url = f"http://103.139.155.35:2020/likes?uid={uid}&keys=boara206"
+                                # ========== CALL API ==========
+                                api_url = f"http://103.139.155.35:2020/likes?uid={target_uid}&keys=shopboara206"
 
                                 try:
-                                    r = requests.get(api_url, timeout=12)
+                                    r = requests.get(api_url, timeout=20)
                                     data_like = r.json()
                                 except:
-                                    msg = "[FF0000]API lỗi hoặc không phản hồi."
+                                    msg = "[B][C][FF0000]API lỗi, không nhận được phản hồi!"
                                     P = await SEndMsG(response.Data.chat_type, msg, uid, chat_id, key, iv)
                                     await SEndPacKeT(whisper_writer, online_writer, 'ChaT', P)
                                     continue
 
-                                # ====== XỬ LÝ MAX LIKE TODAY ======
-                                if "Failse" in data_like:
-                                    if data_like["Failse"] == "Max likes today":
+                                # ========== CHECK MAX LIKES TODAY ==========
+                                if isinstance(data_like, dict) and "Failse" in data_like:
+                                    fail_msg = data_like.get("Failse")
+
+                                    if fail_msg == "Max likes today":
                                         msg = "[B][C][FF0000]Max likes hôm nay!"
                                     else:
-                                        msg = f"[B][C][FF0000]{data_like['Failse']}"
+                                        msg = f"[B][C][FF0000]{fail_msg}"
 
                                     P = await SEndMsG(response.Data.chat_type, msg, uid, chat_id, key, iv)
                                     await SEndPacKeT(whisper_writer, online_writer, 'ChaT', P)
                                     continue
 
-                                # ===== FORMAT RESPONSE THEO STYLE SOURCE 2 =====
-                                # Lấy thông tin nếu API trả về
-                                try:
-                                    info = data_like["result"]["Likes Info"]
-                                    uinfo = data_like["result"]["User Info"]
+                                # ========== VERIFY JSON STRUCTURE ==========
+                                if not isinstance(data_like, dict):
+                                    print("INVALID JSON (not a dict)")
+                                    msg = "[B][C][FF0000]API trả về dữ liệu lỗi!"
+                                    P = await SEndMsG(response.Data.chat_type, msg, uid, chat_id, key, iv)
+                                    await SEndPacKeT(whisper_writer, online_writer, 'ChaT', P)
+                                    continue
 
-                                    added = info.get("Likes Added", "?")
-                                    name = uinfo.get("Account Name", "Unknown")
-                                    region = uinfo.get("Server", "SG")
-                                except:
-                                    # API không trả thông tin đầy đủ → vẫn tạo bảng thành công
-                                    added = "?"
-                                    name = "Unknown"
-                                    region = "?"
+                                result = data_like.get("result")
+                                if not result:
+                                    print("PARSING ERROR: result not found")
+                                    msg = "[B][C][FF0000]API không trả về dữ liệu like!"
+                                    P = await SEndMsG(response.Data.chat_type, msg, uid, chat_id, key, iv)
+                                    await SEndPacKeT(whisper_writer, online_writer, 'ChaT', P)
+                                    continue
 
-                                response_text = (
-                                    f"[C][B][FFFFFF]───────────────"
-                                    f"[C][B][39FF11]                              THÀNH CÔNG\n"
+                                likes_info = result.get("Likes Info")
+                                user_info = result.get("User Info")
+
+                                if not likes_info or not user_info:
+                                    print("PARSING ERROR: missing keys inside result")
+                                    msg = "[B][C][FF0000]API thiếu dữ liệu!"
+                                    P = await SEndMsG(response.Data.chat_type, msg, uid, chat_id, key, iv)
+                                    await SEndPacKeT(whisper_writer, online_writer, 'ChaT', P)
+                                    continue
+
+                                # ========== EXTRACT FIELDS ==========
+                                added = likes_info.get("Likes Added", "?")
+                                acc_name = user_info.get("Account Name", "Unknown")
+                                region = user_info.get("Account Region", "Unknown")
+
+                                # ========== SUCCESS MESSAGE ==========
+                                final_msg = (
+                                    f"[C][B][FFFFFF]───────────────\n"
+                                    f"[C][B][39FF11]         THÀNH CÔNG\n"
                                     f"[C][B][FFFFFF]───────────────\n\n"
-                                    f"[FF0000]Account:          [FFFFFF]{name}\n"
-                                    f"[FF0000]UID:                  [FFFFFF]{masked}\n"
-                                    f"[FF0000]Server:             [FFFFFF]{region}\n\n"
-                                    f"[FF0000]Likes:               [FFFFFF]+{added} Likes\n\n"
+                                    f"[FF0000]Account:     [FFFFFF]{acc_name}\n"
+                                    f"[FF0000]UID:            [FFFFFF]{masked_target_uid}\n"
+                                    f"[FF0000]Server:        [FFFFFF]{region}\n\n"
+                                    f"[FF0000]Likes:         [FFFFFF]+{added}\n\n"
                                     f"[C][B][FFFFFF]───────────────\n"
                                 )
 
-                                P = await SEndMsG(response.Data.chat_type, response_text, uid, chat_id, key, iv)
+                                print(f"[LIKE] UID {uid} → {target_uid} (+{added})")
+
+                                # ====== LOG INTO event_log.txt ======
+                                try:
+                                    with open("event_log.txt", "a", encoding="utf-8") as f:
+                                        f.write(
+                                            f"[{BOT_ID}] UID {uid} -> Send {added} Likes to UID {target_uid} (+{added})\n"
+                                        )
+                                except Exception as log_err:
+                                    print("WRITE LOG ERROR:", log_err)
+
+                                P = await SEndMsG(response.Data.chat_type, final_msg, uid, chat_id, key, iv)
                                 await SEndPacKeT(whisper_writer, online_writer, 'ChaT', P)
 
                             except Exception as e:
-                                print("LIKE ERROR:", e)
+                                print("LIKE COMMAND ERROR:", e)
+                                msg = "[B][C][FF0000]Có lỗi xảy ra khi gửi like!"
+                                P = await SEndMsG(response.Data.chat_type, msg, uid, chat_id, key, iv)
+                                await SEndPacKeT(whisper_writer, online_writer, 'ChaT', P)
                                 continue
+
 
 
 
@@ -1250,15 +1297,19 @@ async def TcPChaT(ip, port, AutHToKen, key, iv, LoGinDaTaUncRypTinG, ready_event
 
                         # FIXED HELP MENU SYSTEM - Now detects commands properly
                         if inPuTMsG.strip().lower() in ("help", "menu", "hi", "bot"):
-                            FRIEND_LIST.add(uid)
+                            if uid not in FRIEND_LIST:
+
+                                FRIEND_LIST.add(uid)
+                                save_friend_list()
+
+                                # Ghi log ra file event_log.txt để tele theo dõi
+                                with open("event_log.txt", "a", encoding="utf-8") as f:
+                                    f.write(f"[{BOT_ID}] Added -> UID {uid}\n")
                             exp = load_customer_expire(uid)
                             if exp:
                                 days, hours, exp_time = exp
                             
                             masked = masked_uid(uid)
-                            with open("event_log.txt", "a", encoding="utf-8") as f:
-                                f.write(f"[{BOT_ID}] Added -> UID {uid}\n")
-                            save_friend_list()
 
                             # Menu 1 - Basic Commands
                             menu1 = f'''
